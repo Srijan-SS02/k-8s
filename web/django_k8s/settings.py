@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('POSTGRES_READY')) == "1"
+DEBUG = str(os.environ.get('DEBUG')) == "1"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -99,7 +99,7 @@ DB_IS_AVAIL = all([
 if DB_IS_AVAIL :
     DATABASES = {  
         'default': {  
-            'ENGINE': "django.db.backends.posgresql",  
+            'ENGINE': "django.db.backends.postgresql",  
             'NAME': DB_DATABASE,  
             'USER': DB_USERNAME,  
             'PASSWORD': DB_PASSWORD,  
@@ -107,6 +107,7 @@ if DB_IS_AVAIL :
             'PORT': DB_PORT  
         }  
 }  
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
